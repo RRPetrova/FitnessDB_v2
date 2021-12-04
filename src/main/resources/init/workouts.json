@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Pilates",
+    "duration": 60,
+    "description": "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.",
+    "heading": "Do you want to learn pilates ?",
+    "trainerName": "Jane Doe",
+    "imageUrl": "/images/pilates.jpg",
+    "price": 70
+  },
+  {
+    "name": "Spinning",
+    "duration": 90,
+    "description": "This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.",
+    "heading": "Get the burn of a real spin class ?",
+    "trainerName": "Melinda",
+    "imageUrl": "/images/spinning.jpg",
+    "price": 60
+  },
+  {
+    "name": "Weightlifting",
+    "duration": 40,
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem minima itaque sapiente minus cum voluptates, nobis hic aliquam quis, sed voluptate provident quibusdam veritatis perferendis vel quos. Soluta, recusandae rem. This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.",
+    "heading": "Develop your strength ?",
+    "trainerName": "Joe",
+    "imageUrl": "/images/powerliftingandbodybuilding600x400.jpg",
+    "price": 50
+  },
+  {
+    "name": "Kickbox",
+    "duration": 80,
+    "description": "This card has supporting text below as a natural lead-in to additional content.",
+    "heading": "Do you want to learn kickbox ?",
+    "trainerName": "Brandon",
+    "imageUrl": "/images/kickbox.jpg",
+    "price": 20
+  }
+]
