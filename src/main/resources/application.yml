@@ -8,7 +8,7 @@ spring:
     driverClassName: org.postgresql.Driver
     password: ${JDBC_DATABASE_PASSWORD:}
     username: ${JDBC_DATABASE_USERNAME:}
-  url: =${JDBC_DATABASE_URL:}
+    url: ${JDBC_DATABASE_URL:}
 
 
 
