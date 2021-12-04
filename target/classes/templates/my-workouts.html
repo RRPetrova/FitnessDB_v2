@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/fragm :: head"></head>
+
+<body>
+<header th:replace="fragments/fragm::navbar"></header>
+
+<main class="j-mw background1-image">
+
+
+    <h1 class="text-center text-white py-3">My workouts</h1>
+
+    <table class="table table-bordered"  th:object="${workouts}">
+
+        <tbody>
+        <th:block th:each="currWorkout, iter: ${workouts}" th:object="${currWorkout}">
+            <tr class="row auto">
+                <th class="col-sm-1 d-flex justify-content-center align-items-center">
+                    <span class="font-weight-bold text-light" th:text="|${iter.index + 1}.|"></span>
+                </th>
+                <td class="col-sm-2 text-center text-light">
+                    <a th:href="@{/workouts/details/{id} (id=${currWorkout.id})}">
+                        <img class="img-thumbnail" th:src="*{imageUrl}">
+                    </a>
+                </td>
+                <td class="col-sm-2 d-flex justify-content-center align-items-center">
+                    <span class="font-weight-bold h5  text-light align-content-center"
+                          th:text="|*{name} every *{getTimeCourse().getDayOfWeek()} at *{getTimeCourse().getTime()}|"></span>
+
+                </td>
+                <td class="col-sm-5">
+                    <p class="font-weight-bold  text-light" th:utext="*{description}"></p>
+                </td>
+                <td class="col-sm-1 d-flex justify-content-center align-items-center">
+                    <a th:href="@{/workouts/details/{id}(id=${currWorkout.id})}" class="btn btn-light">Details</a>
+                </td>
+                <td class="col-sm-1 d-flex justify-content-center align-items-center">
+                    <form th:action="@{/workouts/removeWorkout/{id}(id=${currWorkout.id})}" method="POST">
+                        <button class="btn btn-light btn-width ">Unsign</button>
+                    </form>
+                </td>
+
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</main>
+
+        <!--        <thead>-->
+        <!--        <tr>-->
+        <!--            <th>&nbsp;</th>-->
+        <!--            <th width="14.3%">-->
+        <!--                <p>-->
+        <!--                    <script>-->
+        <!--                        var today = new Date();-->
+        <!--                        document.write(today.toLocaleString('en-US', {-->
+        <!--                            weekday: 'long',-->
+        <!--                            month: 'numeric',-->
+        <!--                            year: 'numeric',-->
+        <!--                            day: 'numeric'-->
+        <!--                        }));</script>-->
+        <!--                </p>-->
+        <!--            </th>-->
+        <!--            <th width="14.3%">-->
+        <!--                <p>-->
+        <!--                    <script>-->
+        <!--                        var tomorrow = new Date(Date.now() + 1000 * 3600 * 24);-->
+        <!--                        document.write(tomorrow.toLocaleString('en-US', {-->
+        <!--                            weekday: 'long',-->
+        <!--                            month: 'numeric',-->
+        <!--                            year: 'numeric',-->
+        <!--                            day: 'numeric'-->
+        <!--                        }));</script>-->
+        <!--                </p>-->
+        <!--            </th>-->
+        <!--            <th width="14.3%">-->
+        <!--                <p>-->
+        <!--                    <script>-->
+        <!--                        var dayAfter = new Date(Date.now() + 1000 * 3600 * 48);-->
+        <!--                        document.write(dayAfter.toLocaleString('en-US', {-->
+        <!--                            weekday: 'long',-->
+        <!--                            month: 'numeric',-->
+        <!--                            year: 'numeric',-->
+        <!--                            day: 'numeric'-->
+        <!--                        }));</script>-->
+        <!--                </p>-->
+        <!--            </th>-->
+        <!--            <th width="14.3%">-->
+        <!--                <p>-->
+        <!--                    <script>-->
+        <!--                        var dayAfter = new Date(Date.now() + 1000 * 3600 * 72);-->
+        <!--                        document.write(dayAfter.toLocaleString('en-US', {-->
+        <!--                            weekday: 'long',-->
+        <!--                            month: 'numeric',-->
+        <!--                            year: 'numeric',-->
+        <!--                            day: 'numeric'-->
+        <!--                        }));</script>-->
+        <!--                </p>-->
+        <!--            </th>-->
+        <!--            <th width="14.3%">-->
+        <!--                <p>-->
+        <!--                    <script>-->
+        <!--                        var dayAfter = new Date(Date.now() + 1000 * 3600 * 96);-->
+        <!--                        document.write(dayAfter.toLocaleString('en-US', {-->
+        <!--                            weekday: 'long',-->
+        <!--                            month: 'numeric',-->
+        <!--                            year: 'numeric',-->
+        <!--                            day: 'numeric'-->
+        <!--                        }));</script>-->
+        <!--                </p>-->
+        <!--            </th>-->
+        <!--            <th width="14.3%">-->
+        <!--                <p>-->
+        <!--                    <script>-->
+        <!--                        var dayAfter = new Date(Date.now() + 1000 * 3600 * 120);-->
+        <!--                        document.write(dayAfter.toLocaleString('en-US', {-->
+        <!--                            weekday: 'long',-->
+        <!--                            month: 'numeric',-->
+        <!--                            year: 'numeric',-->
+        <!--                            day: 'numeric'-->
+        <!--                        }));</script>-->
+        <!--                </p>-->
+        <!--            </th>-->
+        <!--            <th width="14.3%">-->
+        <!--                <p>-->
+        <!--                    <script>-->
+        <!--                        var dayAfter = new Date(Date.now() + 1000 * 3600 * 144);-->
+        <!--                        document.write(dayAfter.toLocaleString('en-US', {-->
+        <!--                            weekday: 'long',-->
+        <!--                            month: 'numeric',-->
+        <!--                            year: 'numeric',-->
+        <!--                            day: 'numeric'-->
+        <!--                        }));</script>-->
+        <!--                </p>-->
+        <!--            </th>-->
+        <!--        </tr>-->
+        <!--        </thead>-->
+
+        <!--        <tbody>-->
+        <!--        <tr>-->
+        <!--            <td class="text-light">10:00</td>-->
+        <!--            <td>-->
+        <!--                <div th:if="" class="container table-cell-container">-->
+        <!--                    <div class="table-cell">-->
+        <!--                        <span class="new-label"></span>-->
+        <!--                        <div class="header">Spinning</div>-->
+        <!--                        <div class="seperator"></div>-->
+        <!--                        <div class="content">-->
+        <!--                            <span class="time-slot">07:30 PM - 08:15 PM</span>-->
+        <!--                            <span class="instructor">John</span>-->
+        <!--                        </div>-->
+        <!--                        <div class="tc-footer">-->
+        <!--                            <span class="duration">-->
+        <!--                                        <span class="icon-clock "></span>-->
+        <!--                                        <span class="ml-1">45 min</span>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--        </tr>-->
+        <!--        <tr>-->
+        <!--            <td class="text-light">13:00</td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--        </tr>-->
+        <!--        <tr>-->
+        <!--            <td class="text-light">15:00</td>-->
+        <!--            <td></td>-->
+        <!--            <td>-->
+        <!--                <div class="container table-cell-container  {{ IsToday ? 'active' : ''}}">-->
+        <!--                    <div class="table-cell  {{ IsToday ? 'active' : ''}}">-->
+        <!--                                <span class="new-label {{IsNew ? '' : 'd-none'}}">-->
+        <!--                                </span>-->
+        <!--                        <div class="header">Spinning</div>-->
+        <!--                        <div class="seperator"></div>-->
+        <!--                        <div class="content">-->
+        <!--                            <span class="time-slot">18:00 PM - 18:45 PM</span>-->
+        <!--                            <span class="instructor">John</span>-->
+        <!--                        </div>-->
+        <!--                        <div class="tc-footer">-->
+        <!--                                    <span class="duration">-->
+        <!--                                        <span class="icon-clock "></span>-->
+        <!--                                        <span class="ml-1">45 min</span>-->
+
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--        </tr>-->
+        <!--        <tr>-->
+        <!--            <td class="text-light">18:00</td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--            <td></td>-->
+        <!--        </tr>-->
+
+
+        <!--        </tbody>-->
+
+
+
+
+<!-- Footer -->
+<footer th:replace="fragments/fragm :: footer" class="text-center text-lg-start bg-dark text-muted "></footer>
+<!-- Footer -->
+<!--<script th:src="@{js/date-format.js}"></script>-->
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments/fragm.html :: head"></head>
+
+<body>
+
+<header th:replace="fragments/fragm.html :: nav"></header>
+
+<main>
+    <h2 class="text-warning font-weight-bold text-center"
+        th:unless="${mostlyChosen == null}"
+        th:object="${mostlyChosen}"
+        th:text="|With ${mostlyChosen.getPercentage()}% ${mostlyChosen.getName()} wins our clients choice this week.|">Users choose</h2>
+
+    <div class="card-group">
+        <div th:each="workout: ${allWorkouts}" th:object="${workout}" class="card">
+            <img class="card-img-top" th:src="*{imageUrl}" alt="Card image cap">
+            <div class="card-body">
+                <h5 th:text="*{name}" class="card-title"></h5>
+                <p th:text="*{description}" class="card-text">This is a wider card with supporting text below as a
+                    natural lead-in to additional
+                    content. This content is a little bit longer.</p>
+
+                <p class="card-text">
+                    <small th:text="|Price: *{price}|" class="text-muted " id="element1">Price: $20</small>
+                    <small th:unless="*{avgRate().isNaN()}" th:text="|Rating: *{avgRate()}/5.00|" class="text-muted" id="element2">Price: $20</small>
+                </p>
+                <br>
+                <div>
+                    <a th:href="@{/workouts/details/{id}(id = *{id})}" class="button">View more info</a>
+                    <a sec:authorize="hasRole('ROLE_ADMIN')"
+                       th:href="@{/workouts/delete/{id}(id=*{id})}"
+                       class="buttonDel"
+                     >Delete workout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/fragm.html :: footer" class="text-center text-lg-start bg-dark text-muted "></footer>
+<script th:src="@{js/del.js}"></script>
+</body>
+
+</html>

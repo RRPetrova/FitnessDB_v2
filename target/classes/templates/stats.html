@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/fragm :: head"></head>
+
+<body>
+<header th:replace="fragments/fragm::navbar"></header>
+
+<main class="j-mw background1-image">
+
+    <div class="search-box_wrapper">
+        <h1 class="text-center text-white py-3">Logger info</h1>
+        <div>
+            <div class="input-group rounded">
+
+                <form class="d-flex">
+                    <input id="searchInput"
+                           style="width: 300px;"
+                           class="form-control me-2"
+                           type="search"
+                           placeholder="Search"
+                           aria-label="Search">
+                    <span class="input-group-text border-1" id="search-addon"><i class="fas fa-search"></i></span>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive text-light">
+    <table class="table table-bordered">
+        <thead>
+        <tr style="color: #fefefe">
+            <th>Id</th>
+            <th>IP address</th>
+            <th>Page</th>
+            <th>Refer page</th>
+            <th>Request method</th>
+            <th>Timestamp</th>
+            <th>URL</th>
+            <th>Username</th>
+            <th>User Agent</th>
+        </tr>
+        </thead>
+        <tbody id="allStatList">
+        <tr
+            th:each="s : ${loggerList}" style="color: #fefefe">
+            <td th:text="${s.id}">${s.id}</td>
+            <td th:text="${s.ip}">${s.ip}</td>
+            <td th:text="${s.page}">${s.page}</td>
+            <td th:text="${s.refererPage}">${s.refererPage}</td>
+            <td th:text="${s.requestMethod}">${s.requestMethod}</td>
+            <td th:text="${s.timestamp}">${s.timestamp}</td>
+            <td th:text="${s.url}">${s.url}</td>
+            <td th:text="${s.user}">${s.user}</td>
+            <td th:text="${s.userAgent}">${userAgent}</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</main>
+<footer th:replace="fragments/fragm :: footer" class="text-center text-lg-start bg-dark text-muted "></footer>
+    <script th:src="@{js/search-bar.js}"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Brandon",
+    "experience": "3258941",
+    "headingTrainer": "Our trainer Brandon will teach you self-defense and much more",
+    "trainerPictureUrl": "/images/trainer-kickbox.webp"
+  },
+  {
+    "name": "Melinda",
+    "experience": "2624765",
+    "headingTrainer": "Pedal with our trainer Melinda",
+    "trainerPictureUrl": "/images/trainer-spinning.jpg"
+  },
+  {
+    "name": "Joe",
+    "experience": "4636897",
+    "headingTrainer": "Muscle growth with Joe",
+    "trainerPictureUrl": "/images/trainer-wl.webp"
+  },
+  {
+    "name": "Jane Doe",
+    "experience": "4845321",
+    "headingTrainer": "Our trainer Jane Doe will show you her love for pilates",
+    "trainerPictureUrl": "/images/trainer-pilates.webp"
+  }
+
+]
