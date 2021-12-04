@@ -1,1 +1,1 @@
-web: java -jar target/fitnessDB-0.0.1-SNAPSHOT.jar
+web: java -jar target/fitnessDB-2.6.0.jar
