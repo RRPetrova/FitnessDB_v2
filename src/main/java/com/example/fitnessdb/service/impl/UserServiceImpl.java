@@ -2,7 +2,6 @@ package com.example.fitnessdb.service.impl;
 
 import com.example.fitnessdb.exceptions.ObjectAlreadyExistsException;
 import com.example.fitnessdb.exceptions.ResourceNotFoundException;
-import com.example.fitnessdb.model.dto.BestWorkout;
 import com.example.fitnessdb.model.dto.MostlyChosenWorkoutDto;
 import com.example.fitnessdb.model.dto.UserCredentialsDto;
 import com.example.fitnessdb.model.entity.UserEntity;
@@ -25,9 +24,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -187,7 +187,7 @@ public class UserServiceImpl implements UserService {
                 .isPresent();
     }
 
-
+    @Transactional
     @Scheduled(cron = "0 0 * * 0")
     public MostlyChosenWorkoutDto mostlyChosen() {
 
