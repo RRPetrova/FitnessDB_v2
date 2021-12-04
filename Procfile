@@ -1,1 +1,1 @@
-web: java -jar /target/{name}-{version}.jar
+web: java -jar /target/RRPetrova-0.0.1-SNAPSHOT.jar
