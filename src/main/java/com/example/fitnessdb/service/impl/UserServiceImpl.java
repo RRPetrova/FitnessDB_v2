@@ -193,7 +193,7 @@ public class UserServiceImpl implements UserService {
 
         List<UserEntity> userEntities = this.userRepo.findAll();
 
-        System.out.println("..................................................................................................................");
+      //  System.out.println("..................................................................................................................");
         if (!userEntities.isEmpty()) {
 
             List<String> bestWorkoutName = new ArrayList<>();
@@ -209,8 +209,8 @@ public class UserServiceImpl implements UserService {
 
             Map.Entry<String, Integer> workoutMostlyChosen = mostCommon(bestWorkoutName);
 
-            System.out.println(workoutMostlyChosen.getKey());
-            System.out.println(workoutMostlyChosen.getValue());
+       //     System.out.println(workoutMostlyChosen.getKey());
+         //   System.out.println(workoutMostlyChosen.getValue());
 
 
             MostlyChosenWorkoutDto mostlyChosenWorkoutDto = new MostlyChosenWorkoutDto();
