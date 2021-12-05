@@ -12,7 +12,7 @@ import com.example.fitnessdb.repo.UserRepo;
 import com.example.fitnessdb.repo.UserRoleRepo;
 import com.example.fitnessdb.repo.WorkoutRepo;
 import com.example.fitnessdb.service.UserService;
-import com.example.fitnessdb.web.listener.EventPublisher;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -38,19 +38,19 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
     private final FitnessDBUserService fitnessDBUserService;
-    private final EventPublisher eventPublisher;
+   // private final EventPublisher eventPublisher;
 
     public UserServiceImpl(UserRepo userRepo, UserRoleRepo userRoleRepo,
                            WorkoutRepo workoutRepo, ModelMapper modelMapper,
-                           PasswordEncoder passwordEncoder, FitnessDBUserService fitnessDBUserService,
-                           EventPublisher eventPublisher) {
+                           PasswordEncoder passwordEncoder, FitnessDBUserService fitnessDBUserService){
+                    //       EventPublisher eventPublisher) {
         this.userRepo = userRepo;
         this.userRoleRepo = userRoleRepo;
         this.workoutRepo = workoutRepo;
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
         this.fitnessDBUserService = fitnessDBUserService;
-        this.eventPublisher = eventPublisher;
+       // this.eventPublisher = eventPublisher;
     }
 
     @Override
@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
         }
 
         this.userRepo.save(userEntity);
-        this.eventPublisher.publishEvent(userCredentialsDto);
+      //  this.eventPublisher.publishEvent(userCredentialsDto);
         UserDetails principal = this.fitnessDBUserService.loadUserByUsername(userEntity.getUsername());
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(
