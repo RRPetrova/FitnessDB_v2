@@ -85,7 +85,7 @@ public class UserController {
 
             return "redirect:/users/register";
         }
-//TODO added from a lecture
+
         if (this.userService.usernameAlreadyExists(userRegisterBindingModel.getUsername())) {
             redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
             redirectAttributes.addFlashAttribute("userAlreadyExists", true);

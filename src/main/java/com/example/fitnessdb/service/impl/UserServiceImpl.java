@@ -109,8 +109,6 @@ public class UserServiceImpl implements UserService {
         SecurityContextHolder
                 .getContext()
                 .setAuthentication(authentication);
-
-
     }
 
     @Override
@@ -157,6 +155,7 @@ public class UserServiceImpl implements UserService {
         this.userRepo.saveAndFlush(userEntity);
     }
 
+    @Transactional
     @Override
     public void removeFromMyWorkoutsList(String username, Long id) {
         UserEntity userEntity = this.userRepo.findByUsername(username)
@@ -193,32 +192,30 @@ public class UserServiceImpl implements UserService {
 
         List<UserEntity> userEntities = this.userRepo.findAll();
 
-      //  System.out.println("..................................................................................................................");
+        List<String> allWorkoutNames = new ArrayList<>();
+        List<WorkoutEntity> myWorkouts = new ArrayList<>();
+
         if (!userEntities.isEmpty()) {
-
-            List<String> bestWorkoutName = new ArrayList<>();
-
             for (UserEntity userEntity : userEntities) {
-                List<WorkoutEntity> myWorkouts = userEntity.getMyWorkouts();
-                if (!myWorkouts.isEmpty()) {
-                    for (WorkoutEntity myWorkout : myWorkouts) {
-                        bestWorkoutName.add(myWorkout.name);
-                    }
+                if (!userEntity.getMyWorkouts().isEmpty()) {
+                    userEntity.getMyWorkouts()
+                            .stream()
+                            .map(WorkoutEntity::getName)
+                            .forEach(allWorkoutNames::add);
                 }
             }
+        }
 
-            Map.Entry<String, Integer> workoutMostlyChosen = mostCommon(bestWorkoutName);
-
-       //     System.out.println(workoutMostlyChosen.getKey());
-         //   System.out.println(workoutMostlyChosen.getValue());
-
+        if (!allWorkoutNames.isEmpty()) {
+            Map.Entry<String, Integer> workoutMostlyChosen = mostCommon(allWorkoutNames);
 
             MostlyChosenWorkoutDto mostlyChosenWorkoutDto = new MostlyChosenWorkoutDto();
-            mostlyChosenWorkoutDto.setPercentage((float) (100/bestWorkoutName.size()*workoutMostlyChosen.getValue()));
+            mostlyChosenWorkoutDto.setPercentage((float) (100 / allWorkoutNames.size() * workoutMostlyChosen.getValue()));
 //            WorkoutEntity byId = this.workoutRepo.findById(bestWorkout.getId())
 //                    .orElseThrow(() -> new ResourceNotFoundException("Workout with this " + bestWorkout.getId() + " id not found."));
             WorkoutEntity byName = workoutRepo.findByName(workoutMostlyChosen.getKey())
-                    .orElseThrow(() -> new ResourceNotFoundException("Workout with name " + workoutMostlyChosen.getKey() + " not found."));;
+                    .orElseThrow(() -> new ResourceNotFoundException("Workout with name " + workoutMostlyChosen.getKey() + " not found."));
+
             mostlyChosenWorkoutDto.setName(workoutMostlyChosen.getKey());
 
             return mostlyChosenWorkoutDto;

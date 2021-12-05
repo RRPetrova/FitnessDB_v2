@@ -103,6 +103,7 @@ public class WorkoutServiceImpl implements WorkoutService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
     public void deleteWorkoutById(Long id) {
         this.workoutRepo.deleteById(id);
@@ -139,7 +140,6 @@ public class WorkoutServiceImpl implements WorkoutService {
                 .map(workout -> {
                     WorkoutDetailsViewDto workoutDetailsViewDto = this.modelMapper.map(workout, WorkoutDetailsViewDto.class);
                   //  TimeCourseDto timeCourseDto = this.modelMapper.map(workout, TimeCourseDto.class);
-
                     return workoutDetailsViewDto;
                 })
                 .collect(Collectors.toList());
