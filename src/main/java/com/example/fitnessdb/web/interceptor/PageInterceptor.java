@@ -1,7 +1,6 @@
 package com.example.fitnessdb.web.interceptor;
 
 import com.example.fitnessdb.service.ExceptionService;
-import com.example.fitnessdb.service.LoggerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

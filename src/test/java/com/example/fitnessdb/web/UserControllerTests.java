@@ -57,7 +57,7 @@ public class UserControllerTests {
                         .param("email", "test@test.bg")
                         .param("password", "testP")
                         .param("confirmPassword", "testP")
-                        .param("phoneNumber", "123-45-678")
+                        .param("phoneNumber", "1234-45-67-88")
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection());
 
@@ -66,7 +66,7 @@ public class UserControllerTests {
         Assertions.assertTrue(newlyCreatedUser.isPresent());
         Assertions.assertEquals("TestName", newlyCreatedUser.get().getFirstName());
         Assertions.assertEquals("test@test.bg", newlyCreatedUser.get().getEmail());
-        Assertions.assertEquals("123-45-678", newlyCreatedUser.get().getPhoneNumber());
+        Assertions.assertEquals("1234-45-67-88", newlyCreatedUser.get().getPhoneNumber());
 
     }
 
@@ -77,7 +77,7 @@ public class UserControllerTests {
         UserRegisterBindingModel userRegisterBindingModelTest = new UserRegisterBindingModel();
         userRegisterBindingModelTest
                 .setFirstName("Testche")
-                .setPhoneNumber("123-45-678")
+                .setPhoneNumber("1232-45-67-38")
                 .setUsername("test")
                 .setPassword("test123")
                 .setConfirmPassword("test123")
@@ -90,7 +90,7 @@ public class UserControllerTests {
                         .param("email", "test@test.bg")
                         .param("password", "testP")
                         .param("confirmPassword", "testP")
-                        .param("phoneNumber", "123-45-678")
+                        .param("phoneNumber", "1234-45-67-88")
                         .with(csrf()))
                 .andExpect(view().name("redirect:/users/register"))
                 .andExpect(model().attributeHasErrors())
@@ -107,7 +107,7 @@ public class UserControllerTests {
                         .param("email", "test@test.bg")
                         .param("password", "testP")
                         .param("confirmPassword", "testP")
-                        .param("phoneNumber", "123-45-678")
+                        .param("phoneNumber", "1234-45-67-88")
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection());
 

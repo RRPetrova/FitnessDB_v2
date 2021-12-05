@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
                     .setFirstName("Admin")
                     .setPassword(passwordEncoder.encode("topsecret"))
                     .setUsername("admin")
-                    .setPhoneNumber("359-99-999")
+                    .setPhoneNumber("3598-99-99-99")
                     .setUserRoles(listOfRoles);
 
             this.userRepo.save(adminUser);
@@ -128,7 +128,7 @@ public class UserServiceImpl implements UserService {
                 .setFirstName("User")
                 .setPassword(passwordEncoder.encode("topsecret"))
                 .setUsername("user1")
-                .setPhoneNumber("359-99-789")
+                .setPhoneNumber("3597-99-78-79")
                 .setUserRoles(setOfRoles)
                 .setMyWorkouts(List.of(this.workoutRepo.findById(4L)
                         .orElseThrow(() -> new ResourceNotFoundException("Workout with id 4 doesnt exists."))));
